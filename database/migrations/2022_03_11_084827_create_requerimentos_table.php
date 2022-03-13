@@ -15,12 +15,13 @@ class CreateRequerimentosTable extends Migration
     {
         Schema::create('requerimentos', function (Blueprint $table) {
             $table->id();
-            $table->string("numero");
+            $table->string("numero")->unique();
             $table->string("requerente");
             $table->text("assunto");
-            $table->dateTime("dataentrada");
-            $table->dateTime('datadespacho');
-            $table->String('tipodespacho');
+            $table->dateTime("data_entrada");
+            $table->text("observacao")->nullable();;
+            $table->dateTime('data_despacho')->nullable();
+            $table->String('tipo_despacho')->nullable();
             $table->timestamps();
         });
     }

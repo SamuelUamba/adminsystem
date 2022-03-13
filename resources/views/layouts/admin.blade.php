@@ -26,10 +26,13 @@
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.4/sweetalert2.min.css">
 </head>
 
 
-<body class="hold-transition sidebar-mini layout-fixed">
+
+<body class=" hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
 
@@ -251,13 +254,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="adicionarrequerimento" class="nav-link">
+                                    <a href="/add" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Entrada</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                                    <a href="/despacho" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Despacho</p>
                                     </a>
@@ -355,6 +358,7 @@
             <!-- /.sidebar -->
         </aside>
 
+
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             @yield('content')
@@ -409,6 +413,28 @@
     <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.0/sweetalert2.min.js"></script>
+    <script>
+        $('#submit').on('click', function() {
+            console.log("clikado")
+            var data = $('#numero').val();
+            console.log(data);
+
+            if (data != 0) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+
+        })
+    </script>
 </body>
 
 </html>

@@ -13,12 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/adicionarrequerimento', [App\Http\Controllers\RequerimentoController::class, 'index'])->name('requerimento');
+Route::get('/add', [App\Http\Controllers\RequerimentoController::class, 'index'])->name('requerimento');
+Route::get('/despacho', [App\Http\Controllers\RequerimentoController::class, 'despacho']);
+Route::any('/requerimento/search', [App\Http\Controllers\RequerimentoController::class, 'search'])->name('requerimeto.search');
 Route::post('/store', [App\Http\Controllers\RequerimentoController::class, 'store']);
+Route::get('/edit/{id}', [App\Http\Controllers\RequerimentoController::class, 'edit']);
+Route::put('/update/{id}', [App\Http\Controllers\RequerimentoController::class, 'update']);
+Route::delete('/destroy/{id}', [App\Http\Controllers\RequerimentoController::class, 'destroy']);
