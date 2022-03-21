@@ -34,9 +34,12 @@ class RequerimentoController extends Controller
         $requer->assunto = $request->assunto;
         $requer->data_entrada = $request->data_entrada;
         $requer->observacao = $request->observacao;
+        $requer->contacto = $request->contacto;
         $requer->data_despacho = $request->data_despacho;
         $requer->tipo_despacho = $request->tipo_despacho;
         $save =   $requer->save();
+
+
 
         //return $save  ? ["Resultado" => "Dados guardados com sucesso"]
         //    :  ["Resultado" => "Falha ao guardar dados"];
@@ -65,6 +68,7 @@ class RequerimentoController extends Controller
         $requer->observacao = $request->observacao;
         $requer->data_despacho = $request->data_despacho;
         $requer->tipo_despacho = $request->tipo_despacho;
+        $requer->contacto = $request->contacto;
         $update = $requer->update();
         if ($update) {
             return Redirect('add');

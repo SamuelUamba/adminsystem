@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Audiencia;
+use App\Models\Nota;
+use App\Models\Requerimento;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $audiencias = Audiencia::all();
+        $requerimentos = Requerimento::all();
+        $notas = Nota::all();
+        return view('home', [
+            'audiencias' => $audiencias,
+            'requerimentos' => $requerimentos,
+            'notas' => $notas,
+        ]);
     }
 }

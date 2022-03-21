@@ -1,12 +1,16 @@
 @extends('layouts.admin')
-
+@include('includes.include_geral')
 @section('content')
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Requerimentos</h1>
+
+                <h1 class="m-0">
+                    <i class="nav-icon fas fa-copy"></i>
+                    Requerimentos
+                </h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -26,7 +30,7 @@
         @csrf
 
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="inputNumero" class="form-label">Número</label>
             <input type="text" class="form-control" name="numero" id="numero" required>
             <div class="valid-feedback">
@@ -38,17 +42,21 @@
             <input type="date" class="form-control" name="data_entrada" required>
         </div>
 
-        <div class="col-md-7">
+        <div class="col-md-5">
             <label for="requerente" class="form-label">Requerente</label>
             <input type="text" class="form-control" name="requerente" required>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-6">
             <label for="assunto" class="form-label">Assunto</label>
-            <textarea class="form-control" name="assunto" rows="3" required></textarea>
+            <textarea class="form-control" id="textarea" name="assunto" rows="3" required></textarea>
         </div>
         <div class="col-md-5">
             <label for="oservacao" class="form-label">Observação</label>
-            <textarea class="form-control" name="observacao" rows="3"></textarea>
+            <textarea class="form-control" id="textarea" name="observacao" rows="3"></textarea>
+        </div>
+        <div class="col-md-6">
+            <label for="contacto" class="form-label">Contacto</label>
+            <input class="form-control" name="contacto" required></input>
         </div>
         <div class="content-header col-md-7">
             <button type=" submit" id="submit" class="btn btn-primary">Submeter</button>
@@ -59,7 +67,7 @@
     <div class="col-md-4">
         <form action="{{route('requerimeto.search')}}" method="POST" class="form form-inline">
             @csrf
-            <input type="text" name="search" class="form-control" placeholder="filtrar...">
+            <input type="text" name="search" class="form-control" placeholder="Filtrar...">
             <button type=" submit" id="submit" class="btn btn-primary">Pesquisar</button>
         </form>
     </div>
@@ -73,7 +81,7 @@
                     <th scope="col">Assunto</th>
                     <th scope="col">Data de entrada</th>
                     <th scope="col">Despacho</th>
-                    <th>Actions</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -95,7 +103,7 @@
                     @endif
 
                     <td>
-                        <a class="btn btn-sm btn-success" href="/edit/{{$requerimento->id}}">Edit</a>
+                        <a class="btn btn-sm btn-success" href="/edit/{{$requerimento->id}}">Editar/Despacho</a>
                         <form style="display:inline-block" action="/destroy/{{$requerimento->id}}" method="POST">
                             @method('DELETE')
                             @csrf

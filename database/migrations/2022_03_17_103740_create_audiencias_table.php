@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRequerimentosTable extends Migration
+class CreateAudienciasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateRequerimentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('requerimentos', function (Blueprint $table) {
+        Schema::create('audiencias', function (Blueprint $table) {
             $table->id();
             $table->string("numero")->unique();
-            $table->string("requerente");
+            $table->string("solicitante");
             $table->text("assunto");
-            $table->date("data_entrada");
-            $table->text("contacto")->nullable();
-            $table->text("observacao")->nullable();
-            $table->date('data_despacho')->nullable();
-            $table->String('tipo_despacho')->nullable();
+            $table->date("data_marcacao");
+            $table->text("gabinete");
+
+            $table->String('contacto')->nullable();
+            $table->date('data_atendimento')->nullable();
+            $table->String('desfecho')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ class CreateRequerimentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requerimentos');
+        Schema::dropIfExists('audiencias');
     }
 }

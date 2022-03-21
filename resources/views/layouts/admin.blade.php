@@ -47,9 +47,6 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="/testehome" class="nav-link"><strong>O NOSSO MAIOR VALOR É A VIDA</strong></a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
             </ul>
 
             <!-- Right navbar links -->
@@ -214,9 +211,9 @@
                         <li class="nav-item menu-open">
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="home" class="nav-link active">
+                                    <a href="/home" class="nav-link active">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                                        <p>Dashboard</p>
+                                        <p>Dashboard Geral</p>
                                     </a>
                                 </li>
                             </ul>
@@ -231,44 +228,24 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/layout/top-nav.html" class="nav-link">
+                                    <a href="/nota" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Entrada</p>
+                                        <p>Notas de Envio</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Despacho</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                    Requerimentos
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/add" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Entrada</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/despacho" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Despacho</p>
+                                        <i class="nav-icon fas fa-copy"></i>
+                                        <p>
+                                            Requerimentos
+                                        </p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
+
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/audiencia/resumo" class="nav-link">
                                 <i class="nav-icon far fa-calendar-alt"></i>
                                 <p>
                                     Audiências
@@ -277,15 +254,15 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/layout/top-nav.html" class="nav-link">
+                                    <a href="/audiencia" class=" nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Entrada</p>
+                                        <p>Marcar</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Despacho</p>
+                                    <a href="/audiencia/resumo" class="nav-link">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>Dashboard </p>
                                     </a>
                                 </li>
                             </ul>
