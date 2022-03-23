@@ -8,13 +8,13 @@
             <div class="col-sm-6">
                 <h1>
                     <i class="far fa-circle nav-icon"></i>
-                    Notas de Envio
+                    Gestão de Usuários
                 </h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Notas</li>
+                    <li class="breadcrumb-item active">Gestão de Usuários</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,7 +28,7 @@
     <form class="row g-3 needs-validation" action="/nota/store" method="POST" enctype="multipart/form-data" validate>
         @csrf
         <div class="col-md-2">
-            <label for="inputNumero" class="form-label">Número</label>
+            <label for="inputNumero" class="form-label">Nome</label>
             <input type="text" class="form-control" name="numero" required>
         </div>
         <div class="col-md-4">

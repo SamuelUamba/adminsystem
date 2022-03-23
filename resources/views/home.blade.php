@@ -23,12 +23,12 @@
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-4 col-6">
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>{{$requerimentos->count()}}</h3>
-                        <h3>Requerimetos</h3>
+                        <h3>Total de Mercados</h3>
                     </div>
                     <div class="icon">
                         <i class="nav-icon fas fa-copy"></i>
@@ -37,12 +37,12 @@
                 </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-4 col-6">
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h3>{{$audiencias->count()}}</h3>
-                        <h3>Audiências</h3>
+                        <h3>Total de Beneficiários</h3>
                     </div>
                     <div class="icon">
                         <i class="nav-icon far fa-calendar-alt"></i>
@@ -51,33 +51,22 @@
                 </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-4 col-6">
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
-                        <h3>P. Disciplinares</h3>
+                        <h3>Gênero</h3>
+                        <h4>Masculino:{{$audiencias->count()}}</h4>
+                        <h4>Femenino:{{$audiencias->count()}}</h4>
                     </div>
                     <div class="icon">
                         <i class="nav-icon fas fa-copy"></i>
                     </div>
-                    <a href="/processos/relatorio" class="small-box-footer">Mais infomações <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="#" class="small-box-footer">Mais infomações <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3>{{$notas->count()}}</h3>
-                        <h3>Notas de Envio</h3>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
-                    </div>
-                    <a href="/expediente/relatorio" class="small-box-footer">Mais infomações <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
+
             <!-- ./col -->
         </div>
         <!-- /.row -->

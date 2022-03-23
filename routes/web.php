@@ -26,13 +26,17 @@ Route::get('/edit/{id}', [App\Http\Controllers\RequerimentoController::class, 'e
 Route::put('/update/{id}', [App\Http\Controllers\RequerimentoController::class, 'update'])->middleware('auth');
 Route::delete('/destroy/{id}', [App\Http\Controllers\RequerimentoController::class, 'destroy'])->middleware('auth');
 
-Route::get('/audiencia', [App\Http\Controllers\AudienciaController::class, 'index'])->name('audiencia')->middleware('auth');
-Route::any('/audiencia/search', [App\Http\Controllers\AudienciaController::class, 'search'])->name('audiencias.search');
-Route::post('/audiencia/store', [App\Http\Controllers\AudienciaController::class, 'store'])->middleware('auth');
-Route::delete('/audiencia/destroy/{id}', [App\Http\Controllers\AudienciaController::class, 'destroy'])->middleware('auth');
-Route::get('/audiencia/edit/{id}', [App\Http\Controllers\AudienciaController::class, 'edit'])->middleware('auth');
-Route::put('/audiencia/update/{id}', [App\Http\Controllers\AudienciaController::class, 'update'])->middleware('auth');
-Route::get('/audiencia/resumo', [App\Http\Controllers\AudienciaController::class, 'resumo'])->name('audiencias.resumo')->middleware('auth');
+Route::get('/audiencia', [App\Http\Controllers\BeneficiarioController::class, 'index'])->name('audiencia')->middleware('auth');
+Route::any('/audiencia/search', [App\Http\Controllers\BeneficiarioController::class, 'search'])->name('audiencias.search');
+Route::post('/audiencia/store', [App\Http\Controllers\BeneficiarioController::class, 'store'])->middleware('auth');
+Route::delete('/audiencia/destroy/{id}', [App\Http\Controllers\BeneficiarioController::class, 'destroy'])->middleware('auth');
+Route::get('/audiencia/edit/{id}', [App\Http\Controllers\BeneficiarioController::class, 'edit'])->middleware('auth');
+Route::put('/audiencia/update/{id}', [App\Http\Controllers\BeneficiarioController::class, 'update'])->middleware('auth');
+Route::get('/audiencia/resumo', [App\Http\Controllers\BeneficiarioController::class, 'resumo'])->name('audiencias.resumo')->middleware('auth');
+
+Route::get('/registos', [App\Http\Controllers\BeneficiarioController::class, 'registos'])->name('registos')->middleware('auth');
+
+
 
 Route::get('/nota', [App\Http\Controllers\NotaController::class, 'index'])->name('notas.nota')->middleware('auth');
 Route::any('/nota/search', [App\Http\Controllers\NotaController::class, 'search'])->name('notas.search')->middleware('auth');
