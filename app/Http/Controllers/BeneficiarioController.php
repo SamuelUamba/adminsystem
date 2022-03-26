@@ -10,24 +10,24 @@ class BeneficiarioController extends Controller
     public function index()
     {
 
-        $audiencias = Beneficiario::orderBy('nome', 'desc')->paginate(10);
-        return view('audiencias.audiencia', ['audiencias' => $audiencias]);
+        $beneficiarios = Beneficiario::orderBy('nome', 'desc')->paginate(10);
+        return view('beneficiarios.beneficiario', ['beneficiarios' => $beneficiarios]);
     }
 
-    public function registos()
+    public function getRegistos()
     {
 
-        $audiencias = Beneficiario::orderBy('nome', 'desc')->paginate(2);
-        return view('audiencias.registos', ['audiencias' => $audiencias]);
+        $beneficiarios = Beneficiario::orderBy('nome', 'desc')->paginate(2);
+        return view('beneficiarios.tabela_registos', ['beneficiarios' => $beneficiarios]);
     }
 
     public function search(Request $request)
     {
         $filters = $request->all();
-        $audiencias = Beneficiario::where('numero', 'LIKE', "%{$request->search}%")
-            ->orwhere('solicitante', 'LIKE', "%{$request->search}%")
-            ->paginate(2);
-        return view('audiencias.audiencia', compact('audiencias', 'filters'));
+        $beneficiarios = Beneficiario::where('nome', 'LIKE', "%{$request->search}%")
+            ->orwhere('numero_documento', 'LIKE', "%{$request->search}%")
+            ->paginate(10);
+        return view('beneficiarios.tabela_registos', compact('beneficiarios', 'filters'));
     }
     public function store(Request $request)
     {
@@ -44,19 +44,19 @@ class BeneficiarioController extends Controller
 
         $save =   $requer->save();
         if ($save) {
-            return Redirect('audiencia');
+            return Redirect('register_beneficiario');
         }
     }
     public function destroy($id)
     {
         Beneficiario::findOrFail($id)->delete();
-        return Redirect('audiencia');
+        return Redirect('register_beneficiario');
     }
 
     public function edit($id)
     {
-        $audiencias = Beneficiario::findOrFail($id);
-        return view('audiencias.update_audiencia', ['audiencia' => $audiencias]);
+        $beneficiarios = Beneficiario::findOrFail($id);
+        return view('beneficiarios.update_beneficiario', ['beneficiarios' => $beneficiarios]);
     }
     public function update(Request $request)
     {
@@ -72,26 +72,7 @@ class BeneficiarioController extends Controller
         $requer->ano_inicio = $request->ano_inicio;
         $update = $requer->update();
         if ($update) {
-            return Redirect('audiencia');
+            return Redirect('register_beneficiario');
         }
-    }
-
-
-    public function resumo()
-    {
-        $audiencias = Beneficiario::all();
-        $totalF = Beneficiario::where('genero', 'F');
-        $totalM = Beneficiario::where('genero', 'M');
-        $desfechoNF = Beneficiario::where('desfecho', 'Não Favoravel');
-        $desfechoF = Beneficiario::where('desfecho', 'Favoravel');
-        $desfechoP = Beneficiario::where('desfecho', null);
-        return view('audiencias.resumo_audiencias', [
-            'audiencias' => $audiencias,
-            'totalF' => $totalF,
-            'totalM' => $totalM,
-            'desfechoNF' => $desfechoNF,
-            'desfechoP' => $desfechoP,
-            'desfechoF' => $desfechoF
-        ]);
     }
 }

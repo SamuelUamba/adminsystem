@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>adminsystem</title>
+    <title>CONSILMO-KUFMET</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 
     <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.4/sweetalert2.min.css">
+
 </head>
 
 
@@ -181,15 +182,17 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional)
+
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Nome do usuario</a>
+                        <a href="#" class="d-block">USER: {{ Auth::user()->name }}</a><br>
+                        <a href="#" class="d-block">FUNÇÃO: {{ Auth::user()->tipo }}</a>
+
                     </div>
-                </div> -->
+                </div>
 
                 <!-- SidebarSearch Form
                 <div class="form-inline">
@@ -204,102 +207,104 @@
                 </div> -->
 
                 <!-- Sidebar Menu -->
+
                 <nav class="mt-2">
+
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
+                        @if((Auth::user()->tipo)=='supervisor')
                         <li class="nav-item menu-open">
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/home" class="nav-link active">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                                        <p>Estatísticas </p>
+                                        <i class="nav-icon fa fa-tachometer-alt "></i>
+                                        <strong>
+                                            <p>ESTATÍSTICAS </p>
+                                        </strong>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-
                         <li class="nav-item">
-
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-users fa-2x"></i>
+                                <strong>
+                                    <p> BENEFICIÁRIOS </p>
+                                </strong>
+                                <i class="fas fa-angle-left right"></i>
+                            </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/audiencia" class=" nav-link">
-                                        <i class="nav-icon fas fa-solid fa-plus"></i>
+                                    <a href="/register_beneficiario" class=" nav-link">
+                                        <i class="fa fa-user-plus" aria-hidden="true"></i>
                                         <p>Adicionar Novo </p>
                                     </a>
                                 </li>
-                                <!-- <li class="nav-item">
-                                    <a href="/audiencia/resumo" class="nav-link">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                                        <p>Dashboard </p>
-                                    </a>
-                                </li> -->
+
                             </ul>
                         </li>
-                        <!-- 
+                        <li class="nav-item menu-open">
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/getRegistos" class="nav-link active">
+                                        <i class="fa fa-table fa-2x" aria-hidden="true"></i>
+                                        <strong>
+                                            <p>TABELA DE REGISTOS </p>
+                                        </strong>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        @endif
+                        <li class="nav-item menu-open">
+                            <strong>
+                        <li class="nav-header">
+                            <!-- <h3>Espaco dado</h3> -->
+                        </li>
+                        </strong>
+                        <!-- MENULIST ADMINISTRADOR -->
+                        @if((Auth::user()->tipo)=='administrador')
+                        <li class="nav-item menu-open">
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/home" class="nav-link active">
+                                        <i class="nav-icon fa fa-tachometer-alt "></i>
+                                        <strong>
+                                            <p>ESTATÍSTICAS </p>
+                                        </strong>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                    Gestão de Usuários
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
+                                <i class="fa fa-users fa-2x"></i>
+                                <strong>
+                                    <p> Users </p>
+                                </strong>
+                                <i class="fas fa-angle-left right"></i>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/nota" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p> Registo de Usuários</p>
+                                    <a href="/register" class=" nav-link">
+                                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                        <p>Adicionar Novo </p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="/add" class="nav-link">
-                                        <i class="nav-icon fas fa-copy"></i>
-                                        <p>
-                                            Requerimentos
-                                        </p>
-                                    </a>
-                                </li>
+
                             </ul>
-                        </li> -->
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/user/list" class=" nav-link">
+                                        <i class="fas fa-list"> </i>
+                                        <p>Lista de Usuários</p>
+                                    </a>
+                                </li>
 
-                        <!-- <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-chart-pie"></i>
-                                    <p>
-                                        Relatórios
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="pages/charts/chartjs.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Geral</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/charts/flot.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Específico</p>
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </li> -->
-                        <!-- <li class="nav-header">Mais</li> -->
-                        <li class="nav-item">
-                            <a href="/audiencia" class=" nav-link">
-                                <i class="nav-icon fas fa-solid fa-plus"></i>
-                                <p>Adicionar Novo </p>
-                            </a>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="/registos" class=" nav-link">
-                                <i class="nav-icon fa-solid fa-table"></i>
-                                <p>Tabela de Registos </p>
-                            </a>
-                        </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -313,6 +318,10 @@
 
                         </li>
                     </ul>
+                    </li>
+                    </ul>
+                    </li>
+
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
@@ -376,7 +385,7 @@
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.0/sweetalert2.min.js"></script>
     <script>
         $('#submit').on('click', function() {
@@ -395,7 +404,7 @@
             }
 
         })
-    </script>
+    </script> -->
 </body>
 
 </html>

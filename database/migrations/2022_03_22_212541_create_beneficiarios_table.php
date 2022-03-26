@@ -20,7 +20,7 @@ class CreateBeneficiariosTable extends Migration
             $table->date('data_nascimento');
             $table->string('numero_telefone');
             $table->string('tipo_documento');
-            $table->string('numero_documento');
+            $table->string('numero_documento')->unique();
             $table->string('nome_mercado');
             $table->string('tipo_actividade');
             $table->date('ano_inicio');

@@ -8,7 +8,7 @@
             <div class="col-sm-6">
                 <h1>
                     <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    Adicioar Usuários
+                    Actualizar dados do Usuários
                 </h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
@@ -23,11 +23,13 @@
 <!-- /.content-header -->
 <div class="container">
 
-    <form class="row g-3 needs-validation" method="POST" href="/doregister">
+    <form class="row g-3 needs-validation" action=" /user/update/{{$users->id}}" method="POST">
         @csrf
+        @method('PUT')
+
         <div class="col-md-5 mb-3">
             <label for="name" class="form-label">{{ __('Nome do Usuário') }}</label>
-            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$users->name}}" required autocomplete="name" autofocus>
             @error('name')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -37,7 +39,7 @@
 
         <div class="col-md-5 mb-3">
             <label for="email">{{ __('Email Address') }}</label>
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $users->email }}" required autocomplete="email">
 
             @error('email')
             <span class="invalid-feedback" role="alert">
@@ -47,7 +49,7 @@
         </div>
         <div class="col-md-5 mb-3">
             <label for="telefone">{{ __('Contacto Telefonico') }}</label>
-            <input id="telefone" maxlength="13" type="text" class="form-control @error('telefone') is-invalid @enderror" name="telefone" value="{{ old('telefone') }}" required autocomplete="telefone">
+            <input id="telefone" maxlength="13" type="text" class="form-control @error('telefone') is-invalid @enderror" name="telefone" value="{{ $users->telefone }}" required autocomplete="telefone">
             @error('telefone')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -57,26 +59,31 @@
         <div class="col-md-5 mb-3">
             <label for="password-confirm">{{ __('Previlégios') }}</label>
             <select class="form-control" id="tipo" name="tipo" required="">
-                <option value="">Escolha..</option>
-                <option value="administrador">Administrador</option>
+                @if(($users->tipo)=='administrador')
+                <option value="administrador" selected>Administrador</option>
                 <option value="supervisor">Supervisor</option>
                 <option value="beneficiario">Beneficiário</option>
+                @elseif(($users->tipo)=='supervisor')
+                <option value="supervisor" selected>Supervisor</option>
+                <option value="administrador">Administrador</option>
+                <option value="beneficiario">Beneficiário</option>
+                @elseif(($users->tipo)=='beneficiario')
+                <option value="beneficiario" selected>Beneficiário</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="administrador">Administrador</option>
+                @endif
             </select>
         </div>
         <div class="col-md-5 mb-3">
             <label for="password">{{ __('Password') }}</label>
-            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ $users->password }}" required autocomplete="new-password">
             @error('password')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
         </div>
-        <div class="col-md-5 mb-3">
-            <label for="password-confirm">{{ __('Confirm Password') }}</label>
-            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-        </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-10 mb-3">
             <button type="submit" class="btn btn-primary">
                 {{ __('Registar') }}
             </button>

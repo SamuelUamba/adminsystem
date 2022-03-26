@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Audiencia;
+use App\Models\Beneficiario;
 use App\Models\Nota;
 use App\Models\Requerimento;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,13 +28,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $audiencias = Audiencia::all();
-        $requerimentos = Requerimento::all();
-        $notas = Nota::all();
+        // Usuarios
+        $total = User::all();
+        $users = User::orderBy('name', 'desc')->paginate(2);
+        $totauser_beneficiarios = User::where('tipo', 'beneficiario');
+        $admin = User::where('tipo', 'administrador');
+        $supervisor = User::where('tipo', 'supervisor');
+        //Beeficiarios
+        $beneficiarios = Beneficiario::all();
+        $totalF = Beneficiario::where('genero', 'F');
+        $totalM = Beneficiario::where('genero', 'M');
         return view('home', [
-            'audiencias' => $audiencias,
-            'requerimentos' => $requerimentos,
-            'notas' => $notas,
+            'beneficiarios' => $beneficiarios,
+            'totalF' => $totalF,
+            'totalM' => $totalM,
+            'total' => $total,
+
+            //Users
+            'beneficiarios' => $totauser_beneficiarios,
+            'admin' => $admin,
+            'supervisor' => $supervisor,
+            'users' => $users,
         ]);
+    }
+    public function register()
+    {
+        return view('auth.register');
     }
 }
