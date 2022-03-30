@@ -31,21 +31,23 @@ class HomeController extends Controller
         // Usuarios
         $total = User::all();
         $users = User::orderBy('name', 'desc')->paginate(2);
-        $totauser_beneficiarios = User::where('tipo', 'beneficiario');
+        $operadores = User::where('tipo', 'operador');
         $admin = User::where('tipo', 'administrador');
         $supervisor = User::where('tipo', 'supervisor');
         //Beeficiarios
-        $beneficiarios = Beneficiario::all();
+        $beneficiarios = Beneficiario::orderBy('nome', 'desc')->paginate(2);
         $totalF = Beneficiario::where('genero', 'F');
         $totalM = Beneficiario::where('genero', 'M');
+        $totalinss = Beneficiario::where('inss', '1');
         return view('home', [
             'beneficiarios' => $beneficiarios,
             'totalF' => $totalF,
             'totalM' => $totalM,
             'total' => $total,
+            'totalinss' => $totalinss,
 
             //Users
-            'beneficiarios' => $totauser_beneficiarios,
+            'operadores' => $operadores,
             'admin' => $admin,
             'supervisor' => $supervisor,
             'users' => $users,

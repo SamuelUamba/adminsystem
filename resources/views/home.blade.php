@@ -1,7 +1,12 @@
 @extends('layouts.admin')
+<!-- Operador -->
+@if((Auth::user()->tipo)=='operador')
 
+@section('content')
+@include('supervisor.supervisor')
+@endsection
 <!-- Supervisor -->
-@if((Auth::user()->tipo)=='supervisor')
+@elseif((Auth::user()->tipo)=='supervisor')
 
 @section('content')
 @include('supervisor.supervisor')

@@ -62,13 +62,13 @@
                 @if(($users->tipo)=='administrador')
                 <option value="administrador" selected>Administrador</option>
                 <option value="supervisor">Supervisor</option>
-                <option value="beneficiario">Beneficiário</option>
+                <option value="operador">Operador</option>
                 @elseif(($users->tipo)=='supervisor')
                 <option value="supervisor" selected>Supervisor</option>
                 <option value="administrador">Administrador</option>
-                <option value="beneficiario">Beneficiário</option>
-                @elseif(($users->tipo)=='beneficiario')
-                <option value="beneficiario" selected>Beneficiário</option>
+                <option value="operador">Operador</option>
+                @elseif(($users->tipo)=='operador')
+                <option value="operador" selected>Operador</option>
                 <option value="supervisor">Supervisor</option>
                 <option value="administrador">Administrador</option>
                 @endif

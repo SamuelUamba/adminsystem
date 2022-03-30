@@ -24,7 +24,11 @@
 
 <!-- Main content -->
 <section class="container">
-
+    @if(session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+    @endif
     <form class="row g-3 needs-validation" action="/beneficiario/store" method="POST" enctype="multipart/form-data" validate>
         @csrf
         <div class="col-md-4 mb-3">
@@ -35,7 +39,7 @@
         <div class="col-md-4 mb-3">
             <label for="state"> Gênero</label>
             <select class="custom-select d-block w-100" id="state" name="genero" required="">
-                <option value="">Choose...</option>
+                <option value="">Escolha...</option>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
             </select>
@@ -59,7 +63,7 @@
         <div class="col-md-4 mb-3">
             <label for="state"> Tipo de Documento de identificação</label>
             <select class="custom-select d-block w-100" id="state" name="tipo_documento" required="">
-                <option value="">Choose...</option>
+                <option value="">Escolha...</option>
                 <option value="BI">BI</option>
                 <option value="Passaporte">Passaporte</option>
                 <option value="Carta de Condução">Carta de Condução</option>
@@ -80,10 +84,9 @@
         <div class="col-md-4 mb-3">
             <label for="state"> Mercado</label>
             <select class="custom-select d-block w-100" id="state" name="nome_mercado" required="">
-                <option value="">Choose...</option>
-                <option value="Mercado Fajardo">Mercado Fajardo</option>
-                <option value="Mercado Malanga">Mercado Fajardo</option>
-                <option value="Mercado Grossista do Zimpeto">Mercado Grossista do Zimpeto</option>
+                @foreach ($mercados as $mercado)
+                <option value="{{$mercado->nome_mercado}}">{{$mercado->nome_mercado}}</option>
+                @endforeach
             </select>
             <div class="invalid-feedback">
                 Please provide a valid state.
@@ -98,9 +101,21 @@
             <input type="date" class="form-control" name="ano_inicio" required>
         </div>
         <div class="col-md-4 mb-3">
-            <label for="link_documento" class="form-label">Carregar o documento identificação</label>
-            <input type="file" class="form-control" name="link_documento" required>
+            <label for="doc_link" class="form-label">Carregar o documento identificação</label>
+            <input type="file" class="form-control" name="doc_link" required>
         </div>
+        <div class="col-md-2 mb-3">
+            <label for="state"> Inscrito no INSS?</label>
+            <select class="custom-select d-block w-100" id="inss" name="inss" required="">
+                <option value="">Escolha...</option>
+                <option value="1">SIM</option>
+                <option value="0">NÃO</option>
+            </select>
+            <div class="invalid-feedback">
+                Please provide a valid state.
+            </div>
+        </div>
+
         <div class="content-header col-md-9">
             <button type=" submit" id="submit" class="btn btn-primary">Submeter</button>
             <button type="reset" class="btn btn-danger">Cancelar</button>

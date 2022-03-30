@@ -60,7 +60,7 @@
                 <option value="">Escolha..</option>
                 <option value="administrador">Administrador</option>
                 <option value="supervisor">Supervisor</option>
-                <option value="beneficiario">Beneficiário</option>
+                <option value="operador">Operador</option>
             </select>
         </div>
         <div class="col-md-5 mb-3">

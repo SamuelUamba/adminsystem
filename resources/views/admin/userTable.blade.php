@@ -12,8 +12,8 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item"><a href="#">Início</a></li>
+                    <li class="breadcrumb-item active">Lista de usuários</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -23,7 +23,11 @@
 
 <!-- Main content -->
 <section class="container">
-
+    @if(session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+    @endif
     <div class="col-md-4">
         <form action="{{route('users.search')}}" method="POST" class="form form-inline">
             @csrf

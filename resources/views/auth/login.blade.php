@@ -24,8 +24,9 @@
 <body>
     <div class="login-clean">
         <div class="illustration">
-            <h1>KUFMET</h1>
+            <img src="{{ asset('dist/img/kufmet.png') }}" style="width: 300px;" class="img-circle elevation-100" alt="Logo">
         </div>
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="row mb-3">
@@ -71,15 +72,21 @@
 
             <div class="row mb-0">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" style="width: 120px; margin-bottom: 20px;">
                         {{ __('          Login') }}
                     </button>
-
                     @if (Route::has('password.request'))
-                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                    <a class="btn btn-link" href="{{ route('password.request') }}" style="text-decoration: none;">
                         {{ __('Forgot Your Password?') }}
                     </a>
                     @endif
+
+                    @if (Route::has('conta.request'))
+                    <a class="btn btn-link" href="{{ route('conta.request') }}" style="text-decoration: none;">
+                        {{ __('Criar Conta') }}
+                    </a>
+                    @endif
+
                 </div>
             </div>
         </form>

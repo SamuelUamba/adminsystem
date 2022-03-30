@@ -8,13 +8,14 @@
             <div class="col-sm-6">
                 <h1>
                     <i class="fa fa-table fa-1x" aria-hidden="true"></i>
-                    Registo de Vendendores Informais
+                    Lista de Mercados
                 </h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active">Registos</li>
+                    <li class="breadcrumb-item active">Mercados</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -27,16 +28,15 @@
 
 
 
-    <div class="col-md-12">
-        <form action="{{route('beneficiarios.search')}}" method="POST" class="form form-inline">
+    <div class="col-md-4">
+        <form action="{{route('mercados.search')}}" method="POST" class="form form-inline">
             @csrf
             <input type="text" name="search" class="form-control" placeholder="Pesquisar...">
             <button type=" submit" id="submit" class="btn btn-primary">Pesquisar</button>
         </form>
-        <a href="/exportListaBeneficiarios" class="btn btn-success" style="float: right;">Exportar PDF</a>
     </div>
     @if(session('status'))
-    <div class="alert alert-danger">
+    <div class="alert alert-success">
         {{ session('status') }}
     </div>
     @endif
@@ -45,53 +45,38 @@
 
             <thead>
                 <tr>
-                    <th scope="col">Nome do Beneficiário</th>
-                    <th scope="col">Gênero</th>
-                    <th scope="col">Data de Nascimento</th>
                     <th scope="col">Nome do Mercado</th>
-                    <th scope="col">Tipo de Actividade</th>
-                    <th scope="col">Ano de Início</th>
-                    <th scope="col">Inscrito no INSS</th>
-
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Localização</th>
                     <th>Ações</th>
-                    <th scope="col">Comprovativo</th>
                 </tr>
             </thead>
             <tbody>
-                @if($beneficiarios->count()==0)
+                @if($mercados->count()==0)
                 <tr>
                     <td colspan="5">Sem dados registados para visaualizacão!</td>
                 </tr>
                 @endif
-                @foreach ($beneficiarios as $beneficiario)
+                @foreach ($mercados as $mercado)
                 <tr>
-                    <td>{{ $beneficiario->nome }}</td>
-                    <td>{{ $beneficiario->genero }}</td>
-                    <td>{{ $beneficiario->data_nascimento }}</td>
-                    <td>{{ $beneficiario->nome_mercado }}</td>
-                    <td>{{ $beneficiario->tipo_actividade }}</td>
-                    <td>{{ $beneficiario->ano_inicio }}</td>
-                    @if(($beneficiario->inss)=='1')
-                    <td>SIM</td>
+                    <td>{{ $mercado->nome_mercado }}</td>
+                    @if(($mercado->tipo)=='1')
+                    <td>Grossista</td>
                     @else
-                    <td>NÃO</td>
+                    <td>Não Grossista</td>
                     @endif
+
+                    <td>{{ $mercado->cidade }}</td>
+
+
+
                     <td>
-
-                        <a class="btn btn-sm btn-success" href="/beneficiario/edit/{{$beneficiario->id}}">Editar</a>
-
-                        @if((Auth::user()->tipo)!='operador')
-
-                        <form style="display:inline-block" action="/beneficiario/destroy/{{$beneficiario->id}}" method="POST">
+                        <a class="btn btn-sm btn-success" href="/mercados/edit/{{$mercado->id}}">Editar</a>
+                        <form style="display:inline-block" action="/mercados/destroy/{{$mercado->id}}" method="POST">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-sm btn-danger"> Delete</button>
                         </form>
-                        @endif
-                    </td>
-                    <td>
-                        <a href="/pdf/{{$beneficiario->id}}" class="btn btn-primary">
-                            Imprimir</a>
                     </td>
                 </tr>
                 @endforeach
@@ -99,9 +84,9 @@
         </table>
         <span>
             @if(isset($filters))
-            {{ $beneficiarios->appends($filters)->links() }}
+            {{ $mercados->appends($filters)->links() }}
             @else
-            {{ $beneficiarios->links() }}
+            {{ $mercados->links() }}
             @endif
             </spa>
             <style>
@@ -110,7 +95,7 @@
                 }
             </style>
             <p>
-                Visualizando {{$beneficiarios->count()}} de {{ $beneficiarios->total() }} Registo(s).
+                Visualizando {{$mercados->count()}} de {{ $mercados->total() }} Registo(s).
             </p>
 
 
