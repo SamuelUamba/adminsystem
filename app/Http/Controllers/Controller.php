@@ -8,7 +8,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 
 class Controller extends BaseController
 {
@@ -44,7 +44,7 @@ class Controller extends BaseController
         $requer->name = $request->name;
         $requer->email = $request->email;
         $requer->tipo = $request->tipo;
-        $requer->password = $request->password;
+        $requer->password = Hash::make($request->password);
         $update = $requer->update();
         if ($update) {
             return Redirect('/user/list')->with('status', 'Usuario Actualizado');

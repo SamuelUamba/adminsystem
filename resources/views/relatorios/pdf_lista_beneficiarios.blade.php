@@ -50,7 +50,7 @@
     <!-- /.content-header -->
     <section class="container">
         <div class="col-md-12">
-            <a href="/exportPDF" class="btn btn-success" style="float: right;">Exportar PDF</a>
+            <a href="/exportPDF" class="btn btn-success" style="float: right;">Exportar lista</a>
         </div>
         <div class="table-responsive">
             <table>

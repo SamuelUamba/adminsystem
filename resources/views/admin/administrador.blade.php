@@ -7,11 +7,9 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Painel de Monitoria e Avaliação</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </div><!-- /.col -->
@@ -29,13 +27,14 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>3</h3>
                         <h3>Total de Mercados</h3>
+                        <h3>{{$mercados->count()}}</h3>
                     </div>
                     <div class="icon">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+
                     </div>
-                    <a href="#" class="small-box-footer">Mais infomações <i class="fas fa-arrow-circle-right"></i></a>
+                    <!-- <a href="#" class="small-box-footer">Mais infomações <i class="fas fa-arrow-circle-right"></i></a> -->
                 </div>
             </div>
 
@@ -51,7 +50,7 @@
                         <i class="fa fa-users fa-2x"></i>
 
                     </div>
-                    <a href="#" class="small-box-footer">Mais infomações <i class="fas fa-arrow-circle-right"></i></a>
+                    <!-- <a href="#" class="small-box-footer">Mais infomações <i class="fas fa-arrow-circle-right"></i></a> -->
                 </div>
             </div>
             <!-- ./col -->
@@ -60,13 +59,13 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>{{$totalinss->count()}}</h3>
                         <h3> Inscritos no INSS</h3>
+                        <h3>{{$totalinss->count()}}</h3>
                     </div>
                     <div class="icon">
                         <i class="fa fa-users fa-2x"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Mais infomações<i class="fas fa-arrow-circle-right"></i></a>
+                    <!-- <a href="#" class="small-box-footer">Mais infomações<i class="fas fa-arrow-circle-right"></i></a> -->
                 </div>
             </div>
             <!-- ./col -->
@@ -95,13 +94,13 @@
                 <!-- small box -->
                 <div class="small-box bg-secondary">
                     <div class="inner">
-                        <h3>Administradors</h3>
-                        <h4>{{$admin->count()}}</h4>
+                        <h3>Administradores</h3>
+                        <h3>{{$admin->count()}}</h3>
                     </div>
                     <div class="icon">
                         <i class="fa fa-cogs fa-2x" aria-hidden="true"> </i>
                     </div>
-                    <a href="#" class="small-box-footer">Mais infomações <i class="fas fa-arrow-circle-right"></i></a>
+                    <!-- <a href="#" class="small-box-footer">Mais infomações <i class="fas fa-arrow-circle-right"></i></a> -->
                 </div>
             </div>
             <!-- ./col -->
@@ -111,12 +110,12 @@
                 <div class="small-box bg-danger">
                     <div class="inner">
                         <h3>Supervisores</h3>
-                        <h4>{{$supervisor->count()}}</h4>
+                        <h3>{{$supervisor->count()}}</h3>
                     </div>
                     <div class="icon">
                         <i class="fa fa-users fa-2x"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Mais infomações <i class="fas fa-arrow-circle-right"></i></a>
+                    <!-- <a href="#" class="small-box-footer">Mais infomações <i class="fas fa-arrow-circle-right"></i></a> -->
                 </div>
             </div>
             <!-- ./col -->
@@ -126,12 +125,12 @@
                 <div class="small-box bg-warning">
                     <div class="inner">
                         <h3>Operadores</h3>
-                        <h4>{{$operadores->count()}}</h4>
+                        <h3>{{$operadores->count()}}</h3>
                     </div>
                     <div class="icon">
                         <i class="fa fa-users fa-2x"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Mais infomações <i class="fas fa-arrow-circle-right"></i></a>
+                    <!-- <a href="#" class="small-box-footer">Mais infomações <i class="fas fa-arrow-circle-right"></i></a> -->
                 </div>
             </div>
             <!-- ./col -->

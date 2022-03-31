@@ -13,8 +13,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Registos</li>
+                    <li class="breadcrumb-item"><a href="/hemo">Home</a></li>
                     <li class="breadcrumb-item active">Actualização de dados</li>
                 </ol>
             </div><!-- /.col -->
@@ -161,8 +160,8 @@
         </div>
 
         <div class="content-header col-md-7">
-            <button type=" submit" id="submit" class="btn btn-primary">Submeter</button>
-            <button type="reset" class="btn btn-danger">Cancelar</button>
+            <button type=" submit" id="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Submeter</button>
+            <button type="reset" class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</button>
         </div>
     </form>
 

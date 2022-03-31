@@ -13,8 +13,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Registos</li>
+                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
                     <li class="breadcrumb-item active">Mercados</li>
                 </ol>
             </div><!-- /.col -->
@@ -32,11 +31,11 @@
         <form action="{{route('mercados.search')}}" method="POST" class="form form-inline">
             @csrf
             <input type="text" name="search" class="form-control" placeholder="Pesquisar...">
-            <button type=" submit" id="submit" class="btn btn-primary">Pesquisar</button>
+            <button type=" submit" id="submit" class="btn btn-primary"><i class="fa fa-search fa-1x" aria-hidden="true"></i></button>
         </form>
     </div>
     @if(session('status'))
-    <div class="alert alert-success">
+    <div class="alert alert-danger">
         {{ session('status') }}
     </div>
     @endif
@@ -71,12 +70,9 @@
 
 
                     <td>
-                        <a class="btn btn-sm btn-success" href="/mercados/edit/{{$mercado->id}}">Editar</a>
-                        <form style="display:inline-block" action="/mercados/destroy/{{$mercado->id}}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <button class="btn btn-sm btn-danger"> Delete</button>
-                        </form>
+                        <a href="/mercados/edit/{{$mercado->id}}"><i class="fa fa-pencil-square-o fa-2x " aria-hidden="true"></i></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$mercado->id}}"> <i class="fa fa-trash-o fa-2x" aria-hidden="true" style="color:red"></i></a>
+
                     </td>
                 </tr>
                 @endforeach
@@ -100,7 +96,30 @@
 
 
     </div>
-
+    <!-- Modal -->
+    @foreach ($mercados as $mercado)
+    <form style="display:inline-block" action="{{route('mercado.destroy',$mercado->id)}}" method="POST">
+        @method('DELETE')
+        @csrf
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3> Confirma a exclusão do registo?</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Deletar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    @endforeach
 
 </section>
 <!-- /.content -->

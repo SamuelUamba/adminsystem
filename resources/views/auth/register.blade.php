@@ -13,7 +13,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
                     <li class="breadcrumb-item active">Usuários</li>
                 </ol>
             </div><!-- /.col -->
@@ -47,7 +47,7 @@
         </div>
         <div class="col-md-5 mb-3">
             <label for="telefone">{{ __('Contacto Telefonico') }}</label>
-            <input id="telefone" maxlength="13" type="text" class="form-control @error('telefone') is-invalid @enderror" name="telefone" value="{{ old('telefone') }}" required autocomplete="telefone">
+            <input id="telefone" maxlength="13" type="text" class="form-control @error('telefone') is-invalid @enderror" name="telefone" required autocomplete="telefone">
             @error('telefone')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -78,10 +78,10 @@
         </div>
         <div class="col-md-4 mb-3">
             <button type="submit" class="btn btn-primary">
-                {{ __('Registar') }}
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> {{ __('Submeter') }}
             </button>
             <button type="reset" class="btn btn-danger">
-                {{ __('Cancelar') }}
+                <i class="fa fa-ban" aria-hidden="true"></i> {{ __('Cancelar') }}
             </button>
         </div>
     </form>

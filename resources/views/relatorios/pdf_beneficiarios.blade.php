@@ -93,7 +93,7 @@
                 @endif
             </div>
             <div class="col-md-6 mb-3">
-                <p>Operador: {{(Auth::user()->name)}} Data:{{$beneficiarios->created_at}} Para Usuário</p>
+                <p>Operador: {{(Auth::user()->name)}} Data:{{$beneficiarios->created_at}}, Original</p>
 
             </div>
         </form>
@@ -174,7 +174,7 @@
                 @endif
             </div>
             <div class="col-md-6 mb-3">
-                <p>Operador: {{(Auth::user()->name)}} Data:{{$beneficiarios->created_at}} Para Arquivo</p>
+                <p>Operador: {{(Auth::user()->name)}} Data:{{$beneficiarios->created_at}} ,Cópia</p>
 
             </div>
         </form>

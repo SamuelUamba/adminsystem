@@ -57,11 +57,12 @@ class BeneficiarioController extends Controller
 
             $documento_Name = md5($requestDocumento->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $request->doc_link->move(public_path('documentos/identificacao'), $documento_Name);
-
             $requer->doc_link = $documento_Name;
         }
-        $save =   $requer->save();
-        if ($save) {
+        if (Beneficiario::where('numero_documento', $request->numero_documento)->exists()) {
+            return Redirect('register_beneficiario')->with('erro', 'Beneficiário existente  ou Duplicação de dados!');
+        } else {
+            $save =   $requer->save();
             return Redirect('register_beneficiario')->with('status', 'Beneficiário registado com sucesso!');
         }
     }

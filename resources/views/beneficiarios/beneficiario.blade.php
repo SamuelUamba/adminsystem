@@ -13,7 +13,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
                     <li class="breadcrumb-item active">Registos</li>
                 </ol>
             </div><!-- /.col -->
@@ -29,11 +29,16 @@
         {{ session('status') }}
     </div>
     @endif
+    @if(session('erro'))
+    <div class="alert alert-danger">
+        {{ session('erro') }}
+    </div>
+    @endif
     <form class="row g-3 needs-validation" action="/beneficiario/store" method="POST" enctype="multipart/form-data" validate>
         @csrf
         <div class="col-md-4 mb-3">
             <label for="nome" class="form-label">Nome do Beneficiário</label>
-            <input type="text" class="form-control" name="nome" id="nome" required>
+            <input type="text" class="form-control" minlength="7" name="nome" id="nome" required>
         </div>
 
         <div class="col-md-4 mb-3">
@@ -74,12 +79,12 @@
                 Please provide a valid state.
             </div>
         </div>
+
         <div class="col-md-4 mb-3">
             <label for="numero_documento" class="form-label">Número do Documento</label>
             <input type="text" class="form-control" name="numero_documento" required>
+
         </div>
-
-
 
         <div class="col-md-4 mb-3">
             <label for="state"> Mercado</label>
@@ -117,8 +122,12 @@
         </div>
 
         <div class="content-header col-md-9">
-            <button type=" submit" id="submit" class="btn btn-primary">Submeter</button>
-            <button type="reset" class="btn btn-danger">Cancelar</button>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> {{ __('Submeter') }}
+            </button>
+            <button type="reset" class="btn btn-danger">
+                <i class="fa fa-ban" aria-hidden="true"></i> {{ __('Cancelar') }}
+            </button>
         </div>
     </form>
 

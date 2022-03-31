@@ -91,7 +91,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/home" class="nav-link active">
-                                        <i class="nav-icon fa fa-tachometer-alt "></i>
+                                        <i class="fa fa-tachometer fa-2x" style="color:blue" aria-hidden="true"></i>
                                         <strong>
                                             <p>PAINEL GERAL </p>
                                         </strong>
@@ -137,7 +137,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/home" class="nav-link active">
-                                        <i class="nav-icon fa fa-tachometer-alt "></i>
+                                        <i class="fa fa-tachometer fa-2x" style="color:blue" aria-hidden="true"></i>
                                         <strong>
                                             <p>PAINEL GERAL </p>
                                         </strong>
@@ -188,7 +188,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/home" class="nav-link active">
-                                        <i class="nav-icon fa fa-tachometer-alt "></i>
+                                        <i class="fa fa-tachometer fa-2x" style="color:blue" aria-hidden="true"></i>
                                         <strong>
                                             <p>PAINEL GERAL </p>
                                         </strong>
@@ -218,8 +218,10 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/getRegistos" class=" nav-link">
-                                        <i class="fas fa-list fa-2x"></i>
-                                        <p> Lista dos Beneficiarios </p>
+                                        <i class="fa fa-users fa-2x"></i>
+                                        <strong>
+                                            <p> Beneficiarios </p>
+                                        </strong>
                                     </a>
                                 </li>
 
@@ -228,7 +230,7 @@
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="fa fa-users fa-2x"></i>
+                                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
                                 <strong>
                                     <p> Usuários </p>
                                 </strong>
@@ -237,7 +239,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/register" class=" nav-link">
-                                        <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
+                                        <i class="fa fa-user-plus " aria-hidden="true"></i>
                                         <p>Adicionar Novo </p>
                                     </a>
                                 </li>
@@ -246,7 +248,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/user/list" class=" nav-link">
-                                        <i class="fas fa-list fa-2x"> </i>
+                                        <i class="fas fa-list "> </i>
                                         <p>Lista de Usuários</p>
                                     </a>
                                 </li>
@@ -258,7 +260,7 @@
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="fa fa-users fa-2x"></i>
+                                <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
                                 <strong>
                                     <p> Mercados </p>
                                 </strong>
@@ -267,7 +269,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/mercados" class=" nav-link">
-                                        <i class="fas fa-list fa-2x"> </i>
+                                        <i class="fa fa-plus" aria-hidden="true"></i>
                                         <p>Adicionar Mercados</p>
                                     </a>
                                 </li>
@@ -276,7 +278,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/mercados/list" class=" nav-link">
-                                        <i class="fas fa-list fa-2x"> </i>
+                                        <i class="fas fa-list "> </i>
                                         <p>Lista de Mercados</p>
                                     </a>
                                 </li>
@@ -351,26 +353,12 @@
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.0/sweetalert2.min.js"></script>
-    <script>
-        $('#submit').on('click', function() {
-            console.log("clikado")
-            var data = $('#numero').val();
-            console.log(data);
 
-            if (data != 0) {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Your work has been saved',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            }
 
-        })
-    </script> -->
+
+    <!-- // bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

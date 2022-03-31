@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Audiencia;
 use App\Models\Beneficiario;
+use App\Models\Mercado;
 use App\Models\Nota;
 use App\Models\Requerimento;
 use App\Models\User;
@@ -39,6 +40,9 @@ class HomeController extends Controller
         $totalF = Beneficiario::where('genero', 'F');
         $totalM = Beneficiario::where('genero', 'M');
         $totalinss = Beneficiario::where('inss', '1');
+        //Mercados
+        $mercados = Mercado::orderBy('nome_mercado', 'desc')->paginate(2);
+
         return view('home', [
             'beneficiarios' => $beneficiarios,
             'totalF' => $totalF,
@@ -51,6 +55,10 @@ class HomeController extends Controller
             'admin' => $admin,
             'supervisor' => $supervisor,
             'users' => $users,
+
+            //mercados
+            'mercados' => $mercados,
+
         ]);
     }
     public function register()
