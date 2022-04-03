@@ -7,6 +7,8 @@ use App\Models\Mercado;
 use App\Models\User;
 use Illuminate\Http\Request;
 use PDF;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class BeneficiarioController extends Controller
 {
@@ -23,7 +25,7 @@ class BeneficiarioController extends Controller
     public function getRegistos()
     {
 
-        $beneficiarios = Beneficiario::orderBy('nome', 'desc')->paginate(2);
+        $beneficiarios = Beneficiario::orderBy('nome', 'desc')->paginate(10);
         return view('beneficiarios.tabela_registos', ['beneficiarios' => $beneficiarios]);
     }
 
@@ -60,16 +62,23 @@ class BeneficiarioController extends Controller
             $requer->doc_link = $documento_Name;
         }
         if (Beneficiario::where('numero_documento', $request->numero_documento)->exists()) {
-            return Redirect('register_beneficiario')->with('erro', 'Beneficiário existente  ou Duplicação de dados!');
+            Alert::error('Erro!', 'Beneficiario ja existente nos registos!');
+            return Redirect('register_beneficiario');
         } else {
-            $save =   $requer->save();
-            return Redirect('register_beneficiario')->with('status', 'Beneficiário registado com sucesso!');
+            $save = $requer->save();
+            Alert::toast('Dado Adicionado!', 'success');
+            return Redirect('register_beneficiario');
         }
     }
     public function destroy($id)
     {
-        Beneficiario::findOrFail($id)->delete();
-        return Redirect('/getRegistos')->with('status', 'Beneficiário Removido com sucesso!');
+        $delete = Beneficiario::findOrFail($id)->delete();
+        if ($delete) {
+            Alert::toast('Eliminado!', 'success');
+            return Redirect('/getRegistos');
+        } else {
+            Alert::error('Erro!', 'Falha na Eliminação');
+        }
     }
 
     public function edit($id)
@@ -101,11 +110,10 @@ class BeneficiarioController extends Controller
 
             $requer->doc_link = $documento_Name;
         }
-
-
         $update = $requer->update();
         if ($update) {
-            return Redirect('register_beneficiario')->with('status', 'Beneficiário registado com sucesso!');;
+            Alert::toast('Dados Actualizados!', 'success');
+            return Redirect('register_beneficiario');
         }
     }
 }

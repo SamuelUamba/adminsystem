@@ -9,6 +9,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Controller extends BaseController
 {
@@ -30,8 +31,13 @@ class Controller extends BaseController
     }
     public function destroy($id)
     {
-        User::findOrFail($id)->delete();
-        return Redirect('/user/list')->with('status', 'Usuario Eliminado');
+        $delete = User::findOrFail($id)->delete();
+        if ($delete) {
+            Alert::toast('Eliminado!', 'success');
+            return Redirect('/user/list');
+        } else {
+            Alert::error('Erro!', 'Falha na Eliminação');
+        }
     }
     public function edit($id)
     {
@@ -47,7 +53,8 @@ class Controller extends BaseController
         $requer->password = Hash::make($request->password);
         $update = $requer->update();
         if ($update) {
-            return Redirect('/user/list')->with('status', 'Usuario Actualizado');
+            Alert::toast('Dados Actualizados!', 'success');
+            return Redirect('/user/list');
         }
     }
 }

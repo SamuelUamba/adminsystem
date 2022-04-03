@@ -24,11 +24,12 @@
 
 <!-- Main content -->
 <section class="container">
-    @if(session('status'))
+    @if(session('status2'))
     <div class="alert alert-success">
         {{ session('status') }}
     </div>
     @endif
+
     <form class="col-md-8 mb-3" action="/mercados/store" method="POST" validate>
         @csrf
         <div class="col-md-8 mb-3">

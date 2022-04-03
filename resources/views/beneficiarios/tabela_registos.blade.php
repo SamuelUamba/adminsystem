@@ -51,8 +51,8 @@
                     <th scope="col">Tipo de Actividade</th>
                     <th scope="col">Ano de Início</th>
                     <th scope="col">Inscrito no INSS</th>
+                    <th colspan="3">Operações</th>
 
-                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,12 +75,22 @@
                     @endif
                     <td>
                         <a href="/beneficiario/edit/{{$beneficiario->id}}"><i class="fa fa-pencil-square-o fa-2x " aria-hidden="true"></i></a>
-                        @if((Auth::user()->tipo)=='administrador')
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$beneficiario->id}}"> <i class="fa fa-trash-o fa-2x" aria-hidden="true" style="color:red"></i></a>
-                        @endif
+
                         <a href="/pdf/{{$beneficiario->id}}">
                             <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></a>
                     </td>
+                    @if((Auth::user()->tipo)=='administrador')
+                    <td>
+                        <form method="POST" action="{{route('beneficiario.destroy',$beneficiario->id)}}">
+                            @csrf
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button type="submit" class="show_confirm" data-toggle="tooltip" title='Delete' style="border: none;">
+                                <i class="fa fa-trash-o fa-2x" style="color:red;"></i>
+
+                            </button>
+                        </form>
+                    </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>
@@ -101,40 +111,7 @@
                 Visualizando {{$beneficiarios->count()}} de {{ $beneficiarios->total() }} Registo(s).
             </p>
     </div>
-    <!-- Modal -->
-    @foreach ($beneficiarios as $beneficiario)
-    <form style="display:inline-block" action="{{route('beneficiario.destroy',$beneficiario->id)}}" method="POST">
-        @method('DELETE')
-        @csrf
-        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h3> Confirma a exclusão do registo?</h3>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-danger">Deletar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    @endforeach
-</section>
-<!-- /.content
-<script type="text/javascript">
-    $('#deleteModal').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget);
-        var recipientId = button.data('id');
-        console.log(recipientId);
 
-        var modal = $(this);
-        modal.find('#dado_id').val(recipientId);
-    })
-</script> -->
+</section>
+
 @endsection

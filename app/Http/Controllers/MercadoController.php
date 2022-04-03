@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mercado;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MercadoController extends Controller
 {
@@ -22,12 +23,12 @@ class MercadoController extends Controller
         $requer->cidade = $request->cidade;
         $save =   $requer->save();
         if ($save) {
-            return Redirect('/mercados')->with('status', 'Mercado Adicionado!');
+            Alert::toast('Mercado Adicionado!', 'success');
+            return Redirect('/mercados');
         }
     }
     public function mercadosList()
     {
-
         $mercados = Mercado::orderBy('nome_mercado', 'desc')->paginate(7);
         return view('mercados.lista', ['mercados' => $mercados]);
     }
@@ -42,8 +43,13 @@ class MercadoController extends Controller
 
     public function destroy($id)
     {
-        Mercado::findOrFail($id)->delete();
-        return Redirect('/mercados/list')->with('status', 'Registo Removido com sucesso!');
+        $delete = Mercado::findOrFail($id)->delete();
+        if ($delete) {
+            Alert::toast('Mercado Eliminado!', 'success');
+            return Redirect('/mercados/list');
+        } else {
+            Alert::error('Erro!', 'Falha na Eliminação');
+        }
     }
 
 
@@ -60,7 +66,8 @@ class MercadoController extends Controller
         $requer->cidade = $request->cidade;
         $update = $requer->update();
         if ($update) {
-            return Redirect('mercados/list')->with('status', 'Actualização feita com sucesso!');;
+            Alert::toast('Dados Actualizados!', 'success');
+            return Redirect('mercados/list');
         }
     }
 }

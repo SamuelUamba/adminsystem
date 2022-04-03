@@ -24,16 +24,7 @@
 
 <!-- Main content -->
 <section class="container">
-    @if(session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-    @endif
-    @if(session('erro'))
-    <div class="alert alert-danger">
-        {{ session('erro') }}
-    </div>
-    @endif
+
     <form class="row g-3 needs-validation" action="/beneficiario/store" method="POST" enctype="multipart/form-data" validate>
         @csrf
         <div class="col-md-4 mb-3">
