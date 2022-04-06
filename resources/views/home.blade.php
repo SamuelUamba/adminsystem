@@ -17,5 +17,11 @@
 @section('content')
 @include('admin.administrador')
 @endsection
+<!-- Bloqueado -->
+@elseif((Auth::user()->tipo)=='bloqueado')
+
+@section('content')
+@include('errors.bloqueado')
+@endsection
 
 @endif

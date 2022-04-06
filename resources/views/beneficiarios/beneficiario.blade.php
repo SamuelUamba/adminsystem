@@ -100,6 +100,7 @@
             <label for="doc_link" class="form-label">Carregar o documento identificação</label>
             <input type="file" class="form-control" name="doc_link" required>
         </div>
+
         <div class="col-md-2 mb-3">
             <label for="state"> Inscrito no INSS?</label>
             <select class="custom-select d-block w-100" id="inss" name="inss" required="">
@@ -111,7 +112,21 @@
                 Please provide a valid state.
             </div>
         </div>
-
+        <div class="col-md-2 mb-3">
+            <label for="empresa"> Possui uma Empresa?</label>
+            <select class="custom-select d-block w-100" id="empresa" name="empresa" required="">
+                <option value="">Escolha...</option>
+                <option value="1">SIM</option>
+                <option value="0">NÃO</option>
+            </select>
+            <div class="invalid-feedback">
+                Please provide a valid empresa.
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="nome_empresa" class="form-label">Nome da Empresa</label>
+            <input type="text" class="form-control" name="nome_empresa">
+        </div>
         <div class="content-header col-md-9">
             <button type="submit" class="btn btn-primary">
                 <i class="fa fa-floppy-o" aria-hidden="true"></i> {{ __('Submeter') }}

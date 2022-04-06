@@ -50,7 +50,8 @@ class Controller extends BaseController
         $requer->name = $request->name;
         $requer->email = $request->email;
         $requer->tipo = $request->tipo;
-        $requer->password = Hash::make($request->password);
+        $requer->telefone = $request->telefone;
+        // $requer->password = Hash::make($request->password);
         $update = $requer->update();
         if ($update) {
             Alert::toast('Dados Actualizados!', 'success');

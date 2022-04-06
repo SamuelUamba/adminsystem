@@ -25,6 +25,8 @@ class CreateBeneficiariosTable extends Migration
             $table->string('tipo_actividade');
             $table->date('ano_inicio');
             $table->boolean('inss');
+            $table->boolean('empresa');
+            $table->string('nome_empresa');
             $table->string('doc_link');
             $table->timestamps();
         });

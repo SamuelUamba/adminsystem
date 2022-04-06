@@ -158,6 +158,27 @@
                 Please provide a valid state.
             </div>
         </div>
+        <div class="col-md-2 mb-3">
+            <label for="empresa"> Possui uma Empresa?</label>
+            <select class="custom-select d-block w-100" id="empresa" name="empresa" required="">
+                @if(($beneficiarios->empresa) =='1')
+                <option value="1" selected>SIM</option>
+                <option value="0">NÃO</option>
+
+                @else
+                <option value="0" selected>NÃO</option>
+                <option value="1">SIM</option>
+
+                @endif
+            </select>
+            <div class="invalid-feedback">
+                Please provide a valid empresa.
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="nome_empresa" class="form-label">Nome da Empresa</label>
+            <input type="text" class="form-control" name="nome_empresa" value="{{$beneficiarios->nome_empresa}}">
+        </div>
 
         <div class="content-header col-md-7">
             <button type=" submit" id="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Submeter</button>

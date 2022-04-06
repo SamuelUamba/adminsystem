@@ -47,7 +47,7 @@
         </div>
         <div class="col-md-5 mb-3">
             <label for="telefone">{{ __('Contacto Telefonico') }}</label>
-            <input id="telefone" maxlength="13" type="text" class="form-control @error('telefone') is-invalid @enderror" name="telefone" required autocomplete="telefone">
+            <input id="telefone" maxlength="13" type="text" class="form-control @error('telefone') is-invalid @enderror" name="telefone" required="">
             @error('telefone')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

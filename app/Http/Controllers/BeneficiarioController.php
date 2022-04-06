@@ -52,6 +52,8 @@ class BeneficiarioController extends Controller
         $requer->tipo_actividade = $request->tipo_actividade;
         $requer->ano_inicio = $request->ano_inicio;
         $requer->inss = $request->inss;
+        $requer->empresa = $request->empresa;
+        $requer->nome_empresa = $request->nome_empresa;
         // upload de documentos
         if ($request->hasFile('doc_link') && $request->file('doc_link')->isvalid()) {
             $requestDocumento = $request->doc_link;
@@ -100,6 +102,8 @@ class BeneficiarioController extends Controller
         $requer->tipo_actividade = $request->tipo_actividade;
         $requer->ano_inicio = $request->ano_inicio;
         $requer->inss = $request->inss;
+        $requer->empresa = $request->empresa;
+        $requer->nome_empresa = $request->nome_empresa;
         // upload de documentos
         if ($request->hasFile('doc_link') && $request->file('doc_link')->isvalid()) {
             $requestDocumento = $request->doc_link;

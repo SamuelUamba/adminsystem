@@ -33,7 +33,7 @@ class HomeController extends Controller
         $total = User::all();
         $users = User::orderBy('name', 'desc')->paginate(2);
         $operadores = User::where('tipo', 'operador');
-        $admin = User::where('tipo', 'administrador');
+        $admin = User::where('tipo', 'administrador')->count();
         $supervisor = User::where('tipo', 'supervisor');
         //Beeficiarios
         $beneficiarios = Beneficiario::orderBy('nome', 'desc')->paginate(2);

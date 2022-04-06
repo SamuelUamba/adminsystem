@@ -95,7 +95,8 @@
                 <div class="small-box bg-secondary">
                     <div class="inner">
                         <h3>Administradores</h3>
-                        <h3>{{$admin->count()}}</h3>
+                        <h3>{{$admin}}</h3>
+
                     </div>
                     <div class="icon">
                         <i class="fa fa-cogs fa-2x" aria-hidden="true"> </i>
